@@ -13,6 +13,14 @@
 		DA014EF61A02A2DA00E605A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA014EF51A02A2DA00E605A5 /* Images.xcassets */; };
 		DA014EF91A02A2DA00E605A5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA014EF71A02A2DA00E605A5 /* LaunchScreen.xib */; };
 		DA014F051A02A2DA00E605A5 /* BloardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA014F041A02A2DA00E605A5 /* BloardTests.swift */; };
+		DA014F171A02A3B700E605A5 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA014F161A02A3B700E605A5 /* KeyboardViewController.swift */; };
+		DA014F1A1A02A3B700E605A5 /* Bloard Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA014F121A02A3B700E605A5 /* Bloard Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DA014F201A02A4FF00E605A5 /* DefaultKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA014F1F1A02A4FF00E605A5 /* DefaultKeyboard.xib */; };
+		DACC250F1A04047A0037B893 /* NumericalKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DACC250E1A04047A0037B893 /* NumericalKeyboard.xib */; };
+		DACC25141A041AB90037B893 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC25101A04188A0037B893 /* AVFoundation.framework */; };
+		DAD4A38D1A04C4F10058403F /* SpecialCharactersKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */; };
+		DAD4A3971A057FD40058403F /* APRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD4A3961A057FD40058403F /* APRoundedButton.m */; };
+		DAFEC3A41A0684E300A276CB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFEC3A31A0684E300A276CB /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +31,28 @@
 			remoteGlobalIDString = DA014EE81A02A2DA00E605A5;
 			remoteInfo = Bloard;
 		};
+		DA014F181A02A3B700E605A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA014EE11A02A2DA00E605A5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA014F111A02A3B700E605A5;
+			remoteInfo = "Bloard Keyboard";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA014F1E1A02A3B700E605A5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DA014F1A1A02A3B700E605A5 /* Bloard Keyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DA014EE91A02A2DA00E605A5 /* Bloard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bloard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +65,20 @@
 		DA014EFE1A02A2DA00E605A5 /* BloardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA014F031A02A2DA00E605A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA014F041A02A2DA00E605A5 /* BloardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloardTests.swift; sourceTree = "<group>"; };
+		DA014F121A02A3B700E605A5 /* Bloard Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Bloard Keyboard.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA014F151A02A3B700E605A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA014F161A02A3B700E605A5 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		DA014F1F1A02A4FF00E605A5 /* DefaultKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultKeyboard.xib; sourceTree = "<group>"; };
+		DA5FDC611A02C4D20039C4EF /* Bloard Keyboard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bloard Keyboard-Bridging-Header.h"; sourceTree = "<group>"; };
+		DACC250E1A04047A0037B893 /* NumericalKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericalKeyboard.xib; sourceTree = "<group>"; };
+		DACC25101A04188A0037B893 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialCharactersKeyboard.xib; sourceTree = "<group>"; };
+		DAD4A3941A057FD40058403F /* Bloard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bloard-Bridging-Header.h"; sourceTree = "<group>"; };
+		DAD4A3951A057FD40058403F /* APRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRoundedButton.h; sourceTree = "<group>"; };
+		DAD4A3961A057FD40058403F /* APRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRoundedButton.m; sourceTree = "<group>"; };
+		DAFEC3A31A0684E300A276CB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		DAFEC3A51A06DE7F00A276CB /* Bloard Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bloard Keyboard.entitlements"; sourceTree = "<group>"; };
+		DAFEC3A61A06DEB600A276CB /* Bloard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Bloard.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +96,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA014F0F1A02A3B700E605A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAFEC3A41A0684E300A276CB /* Social.framework in Frameworks */,
+				DACC25141A041AB90037B893 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -60,8 +112,11 @@
 			isa = PBXGroup;
 			children = (
 				DA014EEB1A02A2DA00E605A5 /* Bloard */,
+				DA014F131A02A3B700E605A5 /* Bloard Keyboard */,
 				DA014F011A02A2DA00E605A5 /* BloardTests */,
 				DA014EEA1A02A2DA00E605A5 /* Products */,
+				DACC25101A04188A0037B893 /* AVFoundation.framework */,
+				DAFEC3A31A0684E300A276CB /* Social.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +125,7 @@
 			children = (
 				DA014EE91A02A2DA00E605A5 /* Bloard.app */,
 				DA014EFE1A02A2DA00E605A5 /* BloardTests.xctest */,
+				DA014F121A02A3B700E605A5 /* Bloard Keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +146,10 @@
 		DA014EEC1A02A2DA00E605A5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DAD4A3981A057FDB0058403F /* APRundedButton */,
+				DAFEC3A61A06DEB600A276CB /* Bloard.entitlements */,
 				DA014EED1A02A2DA00E605A5 /* Info.plist */,
+				DAD4A3941A057FD40058403F /* Bloard-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -112,6 +171,61 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DA014F131A02A3B700E605A5 /* Bloard Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				DA014F161A02A3B700E605A5 /* KeyboardViewController.swift */,
+				DAD4A38E1A052ACC0058403F /* keyboard XIB's */,
+				DA014F141A02A3B700E605A5 /* Supporting Files */,
+			);
+			path = "Bloard Keyboard";
+			sourceTree = "<group>";
+		};
+		DA014F141A02A3B700E605A5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DAFEC3A51A06DE7F00A276CB /* Bloard Keyboard.entitlements */,
+				DA014F151A02A3B700E605A5 /* Info.plist */,
+				DA5FDC611A02C4D20039C4EF /* Bloard Keyboard-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DAD4A38E1A052ACC0058403F /* keyboard XIB's */ = {
+			isa = PBXGroup;
+			children = (
+				DAD4A38F1A052ADB0058403F /* iPhone */,
+			);
+			name = "keyboard XIB's";
+			sourceTree = "<group>";
+		};
+		DAD4A38F1A052ADB0058403F /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				DAD4A3901A052B5D0058403F /* Portait */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		DAD4A3901A052B5D0058403F /* Portait */ = {
+			isa = PBXGroup;
+			children = (
+				DA014F1F1A02A4FF00E605A5 /* DefaultKeyboard.xib */,
+				DACC250E1A04047A0037B893 /* NumericalKeyboard.xib */,
+				DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */,
+			);
+			name = Portait;
+			sourceTree = "<group>";
+		};
+		DAD4A3981A057FDB0058403F /* APRundedButton */ = {
+			isa = PBXGroup;
+			children = (
+				DAD4A3951A057FD40058403F /* APRoundedButton.h */,
+				DAD4A3961A057FD40058403F /* APRoundedButton.m */,
+			);
+			name = APRundedButton;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +236,12 @@
 				DA014EE51A02A2DA00E605A5 /* Sources */,
 				DA014EE61A02A2DA00E605A5 /* Frameworks */,
 				DA014EE71A02A2DA00E605A5 /* Resources */,
+				DA014F1E1A02A3B700E605A5 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA014F191A02A3B700E605A5 /* PBXTargetDependency */,
 			);
 			name = Bloard;
 			productName = Bloard;
@@ -150,6 +266,23 @@
 			productReference = DA014EFE1A02A2DA00E605A5 /* BloardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DA014F111A02A3B700E605A5 /* Bloard Keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA014F1B1A02A3B700E605A5 /* Build configuration list for PBXNativeTarget "Bloard Keyboard" */;
+			buildPhases = (
+				DA014F0E1A02A3B700E605A5 /* Sources */,
+				DA014F0F1A02A3B700E605A5 /* Frameworks */,
+				DA014F101A02A3B700E605A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bloard Keyboard";
+			productName = "Bloard Keyboard";
+			productReference = DA014F121A02A3B700E605A5 /* Bloard Keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,10 +294,25 @@
 				TargetAttributes = {
 					DA014EE81A02A2DA00E605A5 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 7DTJP5N92F;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					DA014EFD1A02A2DA00E605A5 = {
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = DA014EE81A02A2DA00E605A5;
+					};
+					DA014F111A02A3B700E605A5 = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 7DTJP5N92F;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -183,6 +331,7 @@
 			targets = (
 				DA014EE81A02A2DA00E605A5 /* Bloard */,
 				DA014EFD1A02A2DA00E605A5 /* BloardTests */,
+				DA014F111A02A3B700E605A5 /* Bloard Keyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -205,6 +354,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA014F101A02A3B700E605A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD4A38D1A04C4F10058403F /* SpecialCharactersKeyboard.xib in Resources */,
+				DA014F201A02A4FF00E605A5 /* DefaultKeyboard.xib in Resources */,
+				DACC250F1A04047A0037B893 /* NumericalKeyboard.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -214,6 +373,7 @@
 			files = (
 				DA014EF11A02A2DA00E605A5 /* ViewController.swift in Sources */,
 				DA014EEF1A02A2DA00E605A5 /* AppDelegate.swift in Sources */,
+				DAD4A3971A057FD40058403F /* APRoundedButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +385,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA014F0E1A02A3B700E605A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA014F171A02A3B700E605A5 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -232,6 +400,11 @@
 			isa = PBXTargetDependency;
 			target = DA014EE81A02A2DA00E605A5 /* Bloard */;
 			targetProxy = DA014EFF1A02A2DA00E605A5 /* PBXContainerItemProxy */;
+		};
+		DA014F191A02A3B700E605A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA014F111A02A3B700E605A5 /* Bloard Keyboard */;
+			targetProxy = DA014F181A02A3B700E605A5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -338,9 +511,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Bloard/Bloard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Bloard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bloard/Bloard-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -348,9 +529,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Bloard/Bloard.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Bloard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bloard/Bloard-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -388,6 +576,43 @@
 			};
 			name = Release;
 		};
+		DA014F1C1A02A3B700E605A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Bloard Keyboard/Bloard Keyboard.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Bloard Keyboard/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bloard Keyboard/Bloard Keyboard-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DA014F1D1A02A3B700E605A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Bloard Keyboard/Bloard Keyboard.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "Bloard Keyboard/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bloard Keyboard/Bloard Keyboard-Bridging-Header.h";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -407,6 +632,7 @@
 				DA014F0A1A02A2DA00E605A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA014F0B1A02A2DA00E605A5 /* Build configuration list for PBXNativeTarget "BloardTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +641,16 @@
 				DA014F0D1A02A2DA00E605A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA014F1B1A02A3B700E605A5 /* Build configuration list for PBXNativeTarget "Bloard Keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA014F1C1A02A3B700E605A5 /* Debug */,
+				DA014F1D1A02A3B700E605A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

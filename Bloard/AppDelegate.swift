@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //set default values if first launch
-        if (NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch") == true) {
+        if (NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch") == false) {
             
             //set default values
             var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             sharedDefaults?.synchronize()
             
             //set the bool
-            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "firstLaunch")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
         }
         
         return true

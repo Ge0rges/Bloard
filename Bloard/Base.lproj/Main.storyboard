@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChC-lj-fJr">
-                                <rect key="frame" x="-8" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-0.43921568999999999" minValue="-0.59999999999999998" maxValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Ecx-s5-Hw9">
                                         <rect key="frame" x="6" y="76" width="308" height="31"/>
@@ -204,8 +204,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ChC-lj-fJr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-24" id="22R-KC-9xf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ChC-lj-fJr" secondAttribute="trailing" constant="-8" id="2QN-om-21j"/>
+                            <constraint firstItem="ChC-lj-fJr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="6y2-Zr-czt"/>
                             <constraint firstItem="k0O-44-b0g" firstAttribute="top" secondItem="ChC-lj-fJr" secondAttribute="bottom" id="Iz6-wK-620"/>
                             <constraint firstItem="x9G-zw-Zya" firstAttribute="top" secondItem="hIG-hN-gV5" secondAttribute="bottom" id="JKF-sb-6qF"/>
                             <constraint firstItem="qwQ-cw-A2p" firstAttribute="top" secondItem="x9G-zw-Zya" secondAttribute="bottom" constant="8" id="OC8-HE-Zzf"/>
@@ -213,9 +212,8 @@
                             <constraint firstAttribute="trailing" secondItem="x9G-zw-Zya" secondAttribute="trailing" id="Q23-SG-b1M"/>
                             <constraint firstItem="etY-pV-sXM" firstAttribute="top" secondItem="x9G-zw-Zya" secondAttribute="bottom" constant="8" id="R1g-gL-Tml"/>
                             <constraint firstItem="ChC-lj-fJr" firstAttribute="top" secondItem="x9G-zw-Zya" secondAttribute="bottom" id="VhO-xF-9C0"/>
-                            <constraint firstAttribute="centerY" secondItem="ChC-lj-fJr" secondAttribute="centerY" constant="-32" id="gVy-k1-pqM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ChC-lj-fJr" secondAttribute="trailing" constant="-16" id="oIz-YU-Fbe"/>
                             <constraint firstItem="ChC-lj-fJr" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="pnY-pp-5L7"/>
-                            <constraint firstAttribute="centerX" secondItem="ChC-lj-fJr" secondAttribute="centerX" constant="8" id="sjX-WA-T5R"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

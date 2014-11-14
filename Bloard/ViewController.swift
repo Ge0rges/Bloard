@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         //sliders set up
         //remove the tracks
         backgroundSlider.setMaximumTrackImage(UIImage.alloc(), forState: .Normal)
@@ -41,7 +42,7 @@ class ViewController: UIViewController {
         
         //update preview
         keyboardBackground.backgroundColor = UIColor(white: CGFloat(-backgroundSlider.value), alpha: 1)
-
+        
         yKey.backgroundColor = UIColor(white: CGFloat(-keySlider.value), alpha: 1)
         tKey.backgroundColor = UIColor(white: CGFloat(-keySlider.value), alpha: 1)
         rKey.backgroundColor = UIColor(white: CGFloat(-keySlider.value), alpha: 1)
@@ -67,20 +68,28 @@ class ViewController: UIViewController {
         
         qKey.layer.cornerRadius = 5.0
         qKey.clipsToBounds = true
-
-
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //check to see if we need to show setup
+        if (SetupViewController.isCustomKeyboardEnabled() == false) {
+            var storyboard: UIStoryboard = UIStoryboard.init(name: "Main", bundle: NSBundle.mainBundle())
+            self.presentViewController(storyboard.instantiateViewControllerWithIdentifier("SVC") as SetupViewController, animated: true, completion: nil)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.TopAttached;
     }
-
-
+    
+    
     //keyboard color
     @IBAction func setKeyboardBackgroundColor(sender: UISlider) {
         //set the value
@@ -103,7 +112,7 @@ class ViewController: UIViewController {
         eKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
         wKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
         qKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
-
+        
     }
     
     @IBAction func setDefaultColors(sender: UIButton) {
@@ -119,7 +128,7 @@ class ViewController: UIViewController {
         //update the UI
         setKeyboardBackgroundColor(backgroundSlider)
         setKeysBackgroundColor(keySlider)
-
+        
     }
     
     //other actions
@@ -138,6 +147,11 @@ class ViewController: UIViewController {
         self.presentViewController(activityViewController, animated: true, completion: nil)
         
     }
-
+    
+    @IBAction func showTips(sender: UIButton) {
+        //present setup view controller
+        var storyboard: UIStoryboard = UIStoryboard.init(name: "Main", bundle: NSBundle.mainBundle())
+        self.presentViewController(storyboard.instantiateViewControllerWithIdentifier("TVC") as UIViewController, animated: true, completion: nil)
+        
+    }
 }
-

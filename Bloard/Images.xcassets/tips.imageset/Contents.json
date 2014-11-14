@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "SliderBackground.png"
+      "filename" : "tips.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "SliderBackground@2x.png"
+      "filename" : "tips@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "SliderBackground@3x.png"
+      "filename" : "tips@3x.png"
     }
   ],
   "info" : {

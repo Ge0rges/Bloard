@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="Bloard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MVC" title="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Bloard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hIG-hN-gV5"/>
                         <viewControllerLayoutGuide type="bottom" id="k0O-44-b0g"/>
@@ -20,6 +21,24 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChC-lj-fJr">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="zGT-Yl-ZZV">
+                                        <rect key="frame" x="8" y="37" width="304" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="2hK-FG-4H7"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="dBs-hV-5ya">
+                                        <rect key="frame" x="8" y="76" width="304" height="31"/>
+                                    </imageView>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-0.33725490000000002" minValue="-0.59999999999999998" maxValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="MAl-Jg-lOh">
+                                        <rect key="frame" x="6" y="37" width="308" height="31"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="setKeyboardBackgroundColor:" destination="BYZ-38-t0r" eventType="valueChanged" id="owj-dp-kmX"/>
+                                        </connections>
+                                    </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-0.43921568999999999" minValue="-0.59999999999999998" maxValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="Ecx-s5-Hw9">
                                         <rect key="frame" x="6" y="76" width="308" height="31"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -38,24 +57,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="dBs-hV-5ya">
-                                        <rect key="frame" x="8" y="76" width="304" height="31"/>
-                                    </imageView>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="-0.33725490000000002" minValue="-0.59999999999999998" maxValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="MAl-Jg-lOh">
-                                        <rect key="frame" x="6" y="37" width="308" height="31"/>
-                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                        <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="setKeyboardBackgroundColor:" destination="BYZ-38-t0r" eventType="valueChanged" id="owj-dp-kmX"/>
-                                        </connections>
-                                    </slider>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="zGT-Yl-ZZV">
-                                        <rect key="frame" x="8" y="37" width="304" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="2hK-FG-4H7"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select keyboard and keys color:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etY-pV-sXM">
                                         <rect key="frame" x="8" y="8" width="227" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
@@ -168,10 +169,24 @@
                                             <action selector="setDefaultColors:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Csm-f4-cSb"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e54-0C-IgQ">
+                                        <rect key="frame" x="143" y="461" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="e54-0C-IgQ" secondAttribute="height" multiplier="1:1" id="d9o-2E-F2q"/>
+                                        </constraints>
+                                        <state key="normal" image="Tips">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showTips:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gMW-LN-7V9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="e54-0C-IgQ" secondAttribute="bottom" constant="8" id="2dS-0E-9QG"/>
                                     <constraint firstAttribute="centerX" secondItem="Ln2-bY-yYn" secondAttribute="centerX" id="9ZM-JA-wSS"/>
                                     <constraint firstItem="bhm-CJ-mok" firstAttribute="top" secondItem="dBs-hV-5ya" secondAttribute="bottom" constant="10" id="Bmk-h9-3fN"/>
+                                    <constraint firstAttribute="centerX" secondItem="e54-0C-IgQ" secondAttribute="centerX" id="I5b-xz-nTg"/>
                                     <constraint firstItem="zGT-Yl-ZZV" firstAttribute="top" secondItem="etY-pV-sXM" secondAttribute="bottom" constant="8" id="Mil-cv-a6N"/>
                                     <constraint firstItem="Ln2-bY-yYn" firstAttribute="top" secondItem="bhm-CJ-mok" secondAttribute="bottom" constant="8" id="OYT-GY-LnX"/>
                                     <constraint firstAttribute="trailing" secondItem="zGT-Yl-ZZV" secondAttribute="trailing" constant="8" id="OqQ-zN-nMc"/>
@@ -186,6 +201,7 @@
                                     <constraint firstAttribute="trailing" secondItem="qwQ-cw-A2p" secondAttribute="trailing" constant="8" id="cUl-nD-LFM"/>
                                     <constraint firstItem="dBs-hV-5ya" firstAttribute="top" secondItem="zGT-Yl-ZZV" secondAttribute="bottom" constant="8" id="fNa-s3-Q9Q"/>
                                     <constraint firstItem="yG3-yc-XUa" firstAttribute="top" secondItem="Ln2-bY-yYn" secondAttribute="bottom" constant="8" id="fxm-6v-ise"/>
+                                    <constraint firstItem="e54-0C-IgQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ChC-lj-fJr" secondAttribute="top" constant="461" id="hWC-1M-AS5"/>
                                     <constraint firstItem="dBs-hV-5ya" firstAttribute="width" secondItem="zGT-Yl-ZZV" secondAttribute="width" id="jam-uV-ybx"/>
                                     <constraint firstItem="dBs-hV-5ya" firstAttribute="width" secondItem="bhm-CJ-mok" secondAttribute="width" id="kxj-Ls-9g9"/>
                                     <constraint firstItem="yG3-yc-XUa" firstAttribute="width" secondItem="Ln2-bY-yYn" secondAttribute="width" id="lnk-yZ-g0J"/>
@@ -237,10 +253,114 @@
             </objects>
             <point key="canvasLocation" x="866" y="319"/>
         </scene>
+        <!--Setup-->
+        <scene sceneID="BB6-UQ-ev2">
+            <objects>
+                <viewController storyboardIdentifier="SVC" title="Setup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jbo-u6-uey" customClass="SetupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6H0-Bm-ZbR"/>
+                        <viewControllerLayoutGuide type="bottom" id="4uN-3X-DkH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pV1-qO-Dfq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dE8-73-Pf6">
+                                <rect key="frame" x="16" y="475" width="288" height="85"/>
+                                <string key="text">*Full Access allows Bloard to play sounds and access color settings among other things. Your keystrokes are not sent anywhere, and your keystrokes are only recorded for the current word to provide auto-correct function.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Bloard!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNy-gA-WHS">
+                                <rect key="frame" x="88" y="20" width="144" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1. Navigate to Settings &gt; General &gt; Keyboard &gt; Keyboards                                       " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOw-AP-PB0">
+                                <rect key="frame" x="16" y="86" width="288" height="65"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2. Tap on 'Add New Keyboard...' under 3rd Party Keyboards select Bloard Keyboard" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fx6-Vk-yfV">
+                                <rect key="frame" x="16" y="159" width="288" height="65"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3. Go Back into the list of keybaords and tap on Bloard then enable Full Access*" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUx-EJ-1bR">
+                                <rect key="frame" x="16" y="232" width="288" height="65"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8901960784313725" green="0.90196078431372551" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="gNy-gA-WHS" firstAttribute="top" secondItem="6H0-Bm-ZbR" secondAttribute="bottom" id="fno-fP-GcU"/>
+                            <constraint firstAttribute="centerX" secondItem="gNy-gA-WHS" secondAttribute="centerX" id="jlI-Iq-GfQ"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qHs-iP-nfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="319"/>
+        </scene>
+        <!--Tips-->
+        <scene sceneID="btR-E0-18Q">
+            <objects>
+                <viewController storyboardIdentifier="TVC" title="Tips" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eyw-fT-9yb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tJT-hd-Y6P"/>
+                        <viewControllerLayoutGuide type="bottom" id="8db-C6-tHd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qAE-J6-bfL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tips" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDp-gt-bqa">
+                                <rect key="frame" x="145" y="20" width="31" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEN-C8-lTe">
+                                <rect key="frame" x="16" y="49" width="288" height="426"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Bloard first started out as a alternative keyboard for iOS through Cydia which allowed you to always have a sleek black keyboard. When Apple allowed 3rd Party keyboards we seized the chance and here it is: Bloard for iOS 8.                                                             This time you can choose between different shades of grey and black, as well as a cool new auto-correct feature which means you can type up to 2 languages at the same time without having to change the language!                            </mutableString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.90196078430000004" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="MDp-gt-bqa" secondAttribute="centerX" id="DlL-q8-6Kl"/>
+                            <constraint firstItem="MDp-gt-bqa" firstAttribute="top" secondItem="tJT-hd-Y6P" secondAttribute="bottom" id="o0O-Sw-EWh"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="es3-H3-fgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1250" y="319"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Gradient" width="16" height="16"/>
+        <image name="Gradient" width="304" height="31"/>
         <image name="ShareButton" width="50" height="26"/>
+        <image name="Tips" width="35" height="35"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

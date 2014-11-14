@@ -16,6 +16,7 @@
 		DA014F171A02A3B700E605A5 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA014F161A02A3B700E605A5 /* KeyboardViewController.swift */; };
 		DA014F1A1A02A3B700E605A5 /* Bloard Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA014F121A02A3B700E605A5 /* Bloard Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DA014F201A02A4FF00E605A5 /* DefaultKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA014F1F1A02A4FF00E605A5 /* DefaultKeyboard.xib */; };
+		DAB64A181A165A6100545E69 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB64A171A165A6100545E69 /* SetupViewController.m */; };
 		DACC250F1A04047A0037B893 /* NumericalKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DACC250E1A04047A0037B893 /* NumericalKeyboard.xib */; };
 		DACC25141A041AB90037B893 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC25101A04188A0037B893 /* AVFoundation.framework */; };
 		DAD4A38D1A04C4F10058403F /* SpecialCharactersKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */; };
@@ -70,6 +71,8 @@
 		DA014F161A02A3B700E605A5 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		DA014F1F1A02A4FF00E605A5 /* DefaultKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultKeyboard.xib; sourceTree = "<group>"; };
 		DA5FDC611A02C4D20039C4EF /* Bloard Keyboard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bloard Keyboard-Bridging-Header.h"; sourceTree = "<group>"; };
+		DAB64A161A165A6100545E69 /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
+		DAB64A171A165A6100545E69 /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		DACC250E1A04047A0037B893 /* NumericalKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericalKeyboard.xib; sourceTree = "<group>"; };
 		DACC25101A04188A0037B893 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialCharactersKeyboard.xib; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 			children = (
 				DA014EEE1A02A2DA00E605A5 /* AppDelegate.swift */,
 				DA014EF01A02A2DA00E605A5 /* ViewController.swift */,
+				DAB64A161A165A6100545E69 /* SetupViewController.h */,
+				DAB64A171A165A6100545E69 /* SetupViewController.m */,
 				DA014EF21A02A2DA00E605A5 /* Main.storyboard */,
 				DA014EF51A02A2DA00E605A5 /* Images.xcassets */,
 				DA014EF71A02A2DA00E605A5 /* LaunchScreen.xib */,
@@ -374,6 +379,7 @@
 				DA014EF11A02A2DA00E605A5 /* ViewController.swift in Sources */,
 				DA014EEF1A02A2DA00E605A5 /* AppDelegate.swift in Sources */,
 				DAD4A3971A057FD40058403F /* APRoundedButton.m in Sources */,
+				DAB64A181A165A6100545E69 /* SetupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

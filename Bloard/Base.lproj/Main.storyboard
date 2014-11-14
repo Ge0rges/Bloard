@@ -297,7 +297,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.8901960784313725" green="0.90196078431372551" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gNy-gA-WHS" firstAttribute="top" secondItem="6H0-Bm-ZbR" secondAttribute="bottom" id="fno-fP-GcU"/>
                             <constraint firstAttribute="centerX" secondItem="gNy-gA-WHS" secondAttribute="centerX" id="jlI-Iq-GfQ"/>
@@ -334,13 +334,13 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEN-C8-lTe">
                                 <rect key="frame" x="16" y="49" width="288" height="426"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Bloard first started out as a alternative keyboard for iOS through Cydia which allowed you to always have a sleek black keyboard. When Apple allowed 3rd Party keyboards we seized the chance and here it is: Bloard for iOS 8.                                                             This time you can choose between different shades of grey and black, as well as a cool new auto-correct feature which means you can type up to 2 languages at the same time without having to change the language!                            </mutableString>
+                                <string key="text">Bloard first started out as a alternative keyboard for iOS through Cydia which allowed you to always have a sleek black keyboard. When Apple allowed 3rd Party keyboards we seized the chance and here it is: Bloard for iOS 8.                                                             This time you can choose between different shades of grey and black, as well as a cool new auto-correct feature which means you can type up to 2 languages at the same time without having to change the language!                            </string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.89019607840000003" green="0.90196078430000004" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="MDp-gt-bqa" secondAttribute="centerX" id="DlL-q8-6Kl"/>
                             <constraint firstItem="MDp-gt-bqa" firstAttribute="top" secondItem="tJT-hd-Y6P" secondAttribute="bottom" id="o0O-Sw-EWh"/>

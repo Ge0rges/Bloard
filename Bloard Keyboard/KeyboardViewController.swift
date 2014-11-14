@@ -32,7 +32,7 @@ class KeyboardViewController: UIInputViewController {
         //Perform custom UI setup here
         //fix a bug
         self.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-
+        
         //load the keyboard
         var bundle = NSBundle.mainBundle() as NSBundle
         bundle.loadNibNamed("DefaultKeyboard", owner:self, options:nil)
@@ -50,8 +50,11 @@ class KeyboardViewController: UIInputViewController {
         currentKeyboard = 1
         
         //set caps button color
-        capsButton.backgroundColor = UIColor.whiteColor()
-        capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.capsButton.backgroundColor = UIColor.whiteColor()
+            self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        }
+        
         isCaps = true
         
         //round all buttons
@@ -92,73 +95,88 @@ class KeyboardViewController: UIInputViewController {
         
         //set caps color
         if (isCaps == true) {
+            
             //set caps button color
-            capsButton.backgroundColor = UIColor.whiteColor()
-            capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.capsButton.backgroundColor = UIColor.whiteColor()
+                self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+            }
         }
     }
     
     
     /*WRITING*/
     @IBAction func enterText(sender: UIButton) {//common method
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
-        
-        //get button title and document proxy
-        let button = sender as UIButton
-        let title = button.titleForState(.Normal)
-        var proxy = textDocumentProxy as UITextDocumentProxy
-        
-        //check if caps should be enabled
-        if (proxy.autocapitalizationType! == .AllCharacters) {
-            isCaps = true;
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
             
-            capsButton.backgroundColor = UIColor.whiteColor()
-            capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        }
-        
-        
-        //check if caps is enabled and insert the title
-        if (!isCaps) {
-            proxy.insertText(title!.lowercaseString)
-        } else {
-            proxy.insertText(title!)
+            //get button title and document proxy
+            let button = sender as UIButton
+            let title = button.titleForState(.Normal)
+            var proxy = self.textDocumentProxy as UITextDocumentProxy
             
-            //check if we should keep caps or not
-            if (proxy.autocapitalizationType! != .AllCharacters) {
-                capsButton.backgroundColor = UIColor.darkGrayColor()
-                capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            //check if caps should be enabled
+            if (proxy.autocapitalizationType! == .AllCharacters) {
+                self.isCaps = true;
                 
-                isCaps = !isCaps
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.capsButton.backgroundColor = UIColor.whiteColor()
+                    self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                }
             }
-        }
-        
-        //check if end of sentence
-        if ((title == "?" || title == "!" || title == ".") && proxy.autocapitalizationType! == .Sentences) {
-            isCaps = true;
             
-            capsButton.backgroundColor = UIColor.whiteColor()
-            capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+            
+            //check if caps is enabled and insert the title
+            if (!self.isCaps) {
+                proxy.insertText(title!.lowercaseString)
+            } else {
+                proxy.insertText(title!)
+                
+                //check if we should keep caps or not
+                if (proxy.autocapitalizationType! != .AllCharacters) {
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        self.capsButton.backgroundColor = UIColor.darkGrayColor()
+                        self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                    }
+                    
+                    self.isCaps = !self.isCaps
+                }
+            }
+            
+            //check if end of sentence
+            if ((title == "?" || title == "!" || title == ".") && proxy.autocapitalizationType! == .Sentences) {
+                self.isCaps = true;
+                
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.capsButton.backgroundColor = UIColor.whiteColor()
+                    self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                }
+            }
+            
+            //update variables
+            self.textEntered = true
         }
-        
-        //update variables
-        textEntered = true
     }
     
     @IBAction func toggleCaps(sender: UIButton) {
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
-        
-        //update UI
-        isCaps = !isCaps
-        
-        if (isCaps) {
-            sender.backgroundColor = UIColor.whiteColor()
-            sender.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
             
-        } else {
-            sender.backgroundColor = UIColor.darkGrayColor()
-            sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            //update UI
+            self.isCaps = !self.isCaps
+            
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                if (self.isCaps) {
+                    sender.backgroundColor = UIColor.whiteColor()
+                    sender.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                    
+                } else {
+                    sender.backgroundColor = UIColor.darkGrayColor()
+                    sender.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                }
+            }
         }
     }
     
@@ -169,25 +187,27 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBAction func deleteText() {
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
-        
-        //delete the text
-        var proxy = textDocumentProxy as UITextDocumentProxy
-        
-        //stop the timer if it isn't already stopped
-        if (proxy.documentContextBeforeInput != nil) {
-            if (countElements(proxy.documentContextBeforeInput) == 1 && deleteTimer != nil) {
-                deleteTimer.invalidate()
-                deleteTimer = nil;
-                
-                //last character will be deleted no more text
-                textEntered = false
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
+            
+            //delete the text
+            var proxy = self.textDocumentProxy as UITextDocumentProxy
+            
+            //stop the timer if it isn't already stopped
+            if (proxy.documentContextBeforeInput != nil) {
+                if (countElements(proxy.documentContextBeforeInput) == 1 && self.deleteTimer != nil) {
+                    self.deleteTimer.invalidate()
+                    self.deleteTimer = nil;
+                    
+                    //last character will be deleted no more text
+                    self.textEntered = false
+                }
             }
+            
+            //delete 1 back
+            proxy.deleteBackward()
         }
-        
-        //delete 1 back
-        proxy.deleteBackward()
     }
     
     @IBAction func deleteTextStop(sender: UIButton) {
@@ -200,49 +220,57 @@ class KeyboardViewController: UIInputViewController {
     
     /*SPECIAL KEYS*/
     @IBAction func spaceTapMultipleTimes(sender: UIButton) {//common method
-        //get document proxy
-        var proxy = textDocumentProxy as UITextDocumentProxy
-        
-        //check if we should switch keyboards
-        if (currentKeyboard > 1 && textEntered == true) {
-            switchToDefault(sender)
-        }
-        
-        //delete the space and isnert a point
-        proxy.deleteBackward()
-        proxy.insertText(".")
-        
-        //check if caps should be enabled
-        if (proxy.autocapitalizationType! == .Sentences) {
-            isCaps = true;
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //get document proxy
+            var proxy = self.textDocumentProxy as UITextDocumentProxy
             
-            capsButton.backgroundColor = UIColor.whiteColor()
-            capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+            //check if we should switch keyboards
+            if (self.currentKeyboard > 1 && self.textEntered == true) {
+                self.switchToDefault(sender)
+            }
+            
+            //delete the space and isnert a point
+            proxy.deleteBackward()
+            proxy.insertText(".")
+            
+            //check if caps should be enabled
+            if (proxy.autocapitalizationType! == .Sentences) {
+                self.isCaps = true;
+                
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.capsButton.backgroundColor = UIColor.whiteColor()
+                    self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                }
+            }
         }
     }
     
     @IBAction func space(sender: UIButton) {
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
-        
-        //get document proxy
-        var proxy = textDocumentProxy as UITextDocumentProxy
-        
-        //check if we should switch keyboards
-        if (currentKeyboard > 1 && textEntered == true) {
-            switchToDefault(sender)
-        }
-        
-        
-        //insert space
-        proxy.insertText(" ")
-        
-        //check if caps should be enabled
-        if (proxy.autocapitalizationType! == .Words) {
-            isCaps = true;
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
             
-            capsButton.backgroundColor = UIColor.whiteColor()
-            capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+            //get document proxy
+            var proxy = self.textDocumentProxy as UITextDocumentProxy
+            
+            //check if we should switch keyboards
+            if (self.currentKeyboard > 1 && self.textEntered == true) {
+                self.switchToDefault(sender)
+            }
+            
+            
+            //insert space
+            proxy.insertText(" ")
+            
+            //check if caps should be enabled
+            if (proxy.autocapitalizationType! == .Words) {
+                self.isCaps = true;
+                
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.capsButton.backgroundColor = UIColor.whiteColor()
+                    self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                }
+            }
         }
     }
     
@@ -263,8 +291,10 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBAction func switchToNumerical(sender: UIButton) {
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
+        }
         
         //switch to numerical xib
         var bundle = NSBundle.mainBundle() as NSBundle
@@ -307,8 +337,10 @@ class KeyboardViewController: UIInputViewController {
         
         if (isCaps == true) {
             //set caps button color
-            capsButton.backgroundColor = UIColor.whiteColor()
-            capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                self.capsButton.backgroundColor = UIColor.whiteColor()
+                self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+            }
         }
     }
     

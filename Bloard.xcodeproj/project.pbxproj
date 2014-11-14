@@ -20,7 +20,6 @@
 		DACC250F1A04047A0037B893 /* NumericalKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DACC250E1A04047A0037B893 /* NumericalKeyboard.xib */; };
 		DACC25141A041AB90037B893 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC25101A04188A0037B893 /* AVFoundation.framework */; };
 		DAD4A38D1A04C4F10058403F /* SpecialCharactersKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */; };
-		DAD4A3971A057FD40058403F /* APRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD4A3961A057FD40058403F /* APRoundedButton.m */; };
 		DAFEC3A41A0684E300A276CB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFEC3A31A0684E300A276CB /* Social.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,8 +76,6 @@
 		DACC25101A04188A0037B893 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialCharactersKeyboard.xib; sourceTree = "<group>"; };
 		DAD4A3941A057FD40058403F /* Bloard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bloard-Bridging-Header.h"; sourceTree = "<group>"; };
-		DAD4A3951A057FD40058403F /* APRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRoundedButton.h; sourceTree = "<group>"; };
-		DAD4A3961A057FD40058403F /* APRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRoundedButton.m; sourceTree = "<group>"; };
 		DAFEC3A31A0684E300A276CB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		DAFEC3A51A06DE7F00A276CB /* Bloard Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bloard Keyboard.entitlements"; sourceTree = "<group>"; };
 		DAFEC3A61A06DEB600A276CB /* Bloard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Bloard.entitlements; sourceTree = "<group>"; };
@@ -151,7 +148,6 @@
 		DA014EEC1A02A2DA00E605A5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DAD4A3981A057FDB0058403F /* APRundedButton */,
 				DAFEC3A61A06DEB600A276CB /* Bloard.entitlements */,
 				DA014EED1A02A2DA00E605A5 /* Info.plist */,
 				DAD4A3941A057FD40058403F /* Bloard-Bridging-Header.h */,
@@ -220,15 +216,6 @@
 				DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */,
 			);
 			name = Portait;
-			sourceTree = "<group>";
-		};
-		DAD4A3981A057FDB0058403F /* APRundedButton */ = {
-			isa = PBXGroup;
-			children = (
-				DAD4A3951A057FD40058403F /* APRoundedButton.h */,
-				DAD4A3961A057FD40058403F /* APRoundedButton.m */,
-			);
-			name = APRundedButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,7 +365,6 @@
 			files = (
 				DA014EF11A02A2DA00E605A5 /* ViewController.swift in Sources */,
 				DA014EEF1A02A2DA00E605A5 /* AppDelegate.swift in Sources */,
-				DAD4A3971A057FD40058403F /* APRoundedButton.m in Sources */,
 				DAB64A181A165A6100545E69 /* SetupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

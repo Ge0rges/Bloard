@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Georges Kanaan. All rights reserved.
 //
 
+
 import UIKit
 import AVFoundation
 
@@ -15,6 +16,7 @@ class KeyboardViewController: UIInputViewController {
     //declare outlets and varibales
     var isCaps: Bool = true
     var textEntered: Bool = false
+    var loadedNibFromLayoutMethod: Bool = false
     
     var deleteTimer: NSTimer!
     var currentKeyboard: NSInteger!
@@ -30,41 +32,152 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         //Perform custom UI setup here
-        //fix a bug
-        self.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        
-        //load the keyboard
+        //load the default keyboard
         var bundle = NSBundle.mainBundle() as NSBundle
-        bundle.loadNibNamed("DefaultKeyboard", owner:self, options:nil)
-        
-        //set the color
-        updateKeyboardColor()
-        
-        //check if in ap pto see if we should add a timer to refresh the color
-        var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-        if (sharedDefaults!.boolForKey("inApp") == true) {
-            NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateKeyboardColor"), userInfo: nil, repeats: true)
+        if(UIScreen.mainScreen().bounds.size.width < UIScreen.mainScreen().bounds.size.height){//check orientation
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                bundle.loadNibNamed("DefaultKeyboardiPad", owner:self, options:nil)
+            } else {
+                bundle.loadNibNamed("DefaultKeyboard", owner:self, options:nil)
+                
+            }
+        } else {
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                bundle.loadNibNamed("DefaultKeyboardiPadLandscape", owner:self, options:nil)
+            } else {
+                bundle.loadNibNamed("DefaultKeyboardLandscape", owner:self, options:nil)
+            }
         }
         
         //update variables to keep track of where we are
-        currentKeyboard = 1
+        self.currentKeyboard = 1
         
-        //set caps button color
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            self.capsButton.backgroundColor = UIColor.whiteColor()
-            self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
-        }
-        
-        isCaps = true
-        
-        //round all buttons
-        for view in self.inputView.subviews as [UIView] {
-            view.layer.cornerRadius = 5.0
-            view.clipsToBounds = true
+        //rest on background thread
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
+            //set default capitalization
+            var proxy = self.textDocumentProxy as UITextDocumentProxy
+            if (proxy.autocapitalizationType! == .None) {
+                self.isCaps = false;
+            } else {
+                self.isCaps = true;
+            }
             
+            //check if in container app to see if we should add a timer to refresh the color
+            dispatch_after(1, dispatch_get_main_queue(), {
+                //set the color
+                self.updateKeyboardColor()
+
+                var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
+                if (sharedDefaults!.boolForKey("inApp") == true) {
+                    NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateKeyboardColor"), userInfo: nil, repeats: true)
+                }
+            })
+            
+            //set caps button color
+            if (self.isCaps == true) {
+                //set caps button color
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.capsButton.backgroundColor = UIColor.whiteColor()
+                    self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                }
+            }
+            
+            self.isCaps = true
+            
+            //round all buttons
+            for view in self.inputView.subviews as [UIView] {
+                view.layer.cornerRadius = 4.5
+                view.clipsToBounds = true
+                
+            }
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if (!loadedNibFromLayoutMethod) {
+            if(UIScreen.mainScreen().bounds.size.width < UIScreen.mainScreen().bounds.size.height){//check orientation
+                //update the bool
+                loadedNibFromLayoutMethod = true
+                
+                //Keyboard is in Portrait load correct nib
+                if (currentKeyboard == 1) {
+                    //load the keyboard
+                    var bundle = NSBundle.mainBundle() as NSBundle
+                    if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                        bundle.loadNibNamed("DefaultKeyboardiPad", owner:self, options:nil)
+                    } else {
+                        bundle.loadNibNamed("DefaultKeyboard", owner:self, options:nil)
+                    }
+                    
+                    //update caps button
+                    if (isCaps == true) {
+                        //set caps button color
+                        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            self.capsButton.backgroundColor = UIColor.whiteColor()
+                            self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                        }
+                    }
+                    
+                } else if (currentKeyboard == 2) {
+                    //load the keyboard
+                    var bundle = NSBundle.mainBundle() as NSBundle
+                    if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                        bundle.loadNibNamed("NumericalKeyboardiPad", owner:self, options:nil)
+                    } else {
+                        bundle.loadNibNamed("NumericalKeyboard", owner:self, options:nil)
+                    }
+                    
+                } else if (currentKeyboard == 3) {
+                    var bundle = NSBundle.mainBundle() as NSBundle
+                    if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                        bundle.loadNibNamed("SpecialCharactersKeyboardiPad", owner:self, options:nil)
+                    } else {
+                        bundle.loadNibNamed("SpecialCharactersKeyboard", owner:self, options:nil)
+                    }
+                }
+                
+            } else{
+                //Keyboard is in Landscape load correct nib
+                if (currentKeyboard == 1) {
+                    var bundle = NSBundle.mainBundle() as NSBundle
+                    bundle.loadNibNamed("DefaultKeyboardLandscape", owner:self, options:nil)
+                    
+                    if (isCaps == true) {
+                        //set caps button color
+                        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            self.capsButton.backgroundColor = UIColor.whiteColor()
+                            self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                        }
+                    }
+                    
+                } else if (currentKeyboard == 2) {
+                    var bundle = NSBundle.mainBundle() as NSBundle
+                    if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                        bundle.loadNibNamed("NumericalKeyboardiPadLandscape", owner:self, options:nil)
+                    } else {
+                        bundle.loadNibNamed("NumericalKeyboardLandscape", owner:self, options:nil)
+                    }
+                } else if (currentKeyboard == 3) {
+                    var bundle = NSBundle.mainBundle() as NSBundle
+                    if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                        bundle.loadNibNamed("SpecialCharactersKeyboardiPadLandscape", owner:self, options:nil)
+                    } else {
+                        bundle.loadNibNamed("SpecialCharactersKeyboardLandscape", owner:self, options:nil)
+                    }
+                }
+            }
+            
+            for view in self.inputView.subviews as [UIView] {
+                view.layer.cornerRadius = 4.5
+                view.clipsToBounds = true
+            }
+            dispatch_after(2, dispatch_get_main_queue(), {
+                self.loadedNibFromLayoutMethod = false
+            })
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
@@ -86,11 +199,11 @@ class KeyboardViewController: UIInputViewController {
         var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
         
         //set the background color
-        self.inputView.backgroundColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBBackgroundColorShade")), alpha: 1)
+        self.inputView.backgroundColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBBackgroundColorShade")), alpha:1)
         
         //set the key color
         for view in self.inputView.subviews as [UIView] {
-            view.backgroundColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha: 1)
+            view.backgroundColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
         }
         
         //set caps color
@@ -119,6 +232,13 @@ class KeyboardViewController: UIInputViewController {
             //check if caps should be enabled
             if (proxy.autocapitalizationType! == .AllCharacters) {
                 self.isCaps = true;
+                
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    self.capsButton.backgroundColor = UIColor.whiteColor()
+                    self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
+                }
+            } else if (proxy.autocapitalizationType! == .None) {
+                self.isCaps = false;
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.capsButton.backgroundColor = UIColor.whiteColor()
@@ -275,16 +395,31 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBAction func changeKeyboard(sender: UIButton) {
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
+        }
         
         //change keyboard
         self.advanceToNextInputMode()
     }
     
     @IBAction func enter(sender: UIButton) {
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
+        }
+        
+        //enter
+        var proxy = self.textDocumentProxy as UITextDocumentProxy
+        proxy.insertText("\n")
+    }
+    
+    @IBAction func dismissKeyboard(sender: UIButton) {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
+        }
         
         //dismiss keyboard
         self.dismissKeyboard()
@@ -297,8 +432,23 @@ class KeyboardViewController: UIInputViewController {
         }
         
         //switch to numerical xib
-        var bundle = NSBundle.mainBundle() as NSBundle
-        bundle.loadNibNamed("NumericalKeyboard", owner:self, options:nil)
+        if(UIScreen.mainScreen().bounds.size.width < UIScreen.mainScreen().bounds.size.height){//check orientation
+            var bundle = NSBundle.mainBundle() as NSBundle
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                bundle.loadNibNamed("NumericalKeyboardiPad", owner:self, options:nil)
+            } else {
+                bundle.loadNibNamed("NumericalKeyboard", owner:self, options:nil)
+            }
+            
+            
+        } else{
+            var bundle = NSBundle.mainBundle() as NSBundle
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                bundle.loadNibNamed("NumericalKeyboardiPadLandscape", owner:self, options:nil)
+            } else {
+                bundle.loadNibNamed("NumericalKeyboardLandscape", owner:self, options:nil)
+            }
+        }
         
         //update variables to keep track of where we are
         currentKeyboard = 2
@@ -306,35 +456,42 @@ class KeyboardViewController: UIInputViewController {
         
         //round all buttons
         for view in self.inputView.subviews as [UIView] {
-            view.layer.cornerRadius = 5.0
+            view.layer.cornerRadius = 4.5
             view.clipsToBounds = true
         }
         
         //update keyboard color
-        updateKeyboardColor()
+        dispatch_after(1, dispatch_get_main_queue(), {
+            self.updateKeyboardColor()
+        })
     }
     
     @IBAction func switchToDefault(sender: UIButton) {
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
-        
-        //switch to numerical xib
-        var bundle = NSBundle.mainBundle() as NSBundle
-        bundle.loadNibNamed("DefaultKeyboard", owner:self, options:nil)
-        
-        //update variables to keep track of where we are
-        currentKeyboard = 1
-        textEntered = false
-        
-        //round all buttons
-        for view in self.inputView.subviews as [UIView] {
-            view.layer.cornerRadius = 5.0
-            view.clipsToBounds = true
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
         }
         
-        //update keyboard color
-        updateKeyboardColor()
+        //switch to numerical xib
+        if(UIScreen.mainScreen().bounds.size.width < UIScreen.mainScreen().bounds.size.height){//check orientation
+            var bundle = NSBundle.mainBundle() as NSBundle
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                bundle.loadNibNamed("DefaultKeyboardiPad", owner:self, options:nil)
+            } else {
+                bundle.loadNibNamed("DefaultKeyboard", owner:self, options:nil)
+            }
+            
+            
+        } else{
+            var bundle = NSBundle.mainBundle() as NSBundle
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                bundle.loadNibNamed("DefaultKeyboardiPadLandscape", owner:self, options:nil)
+            } else {
+                bundle.loadNibNamed("DefaultKeyboardLandscape", owner:self, options:nil)
+            }
+        }
         
+        //update caps button
         if (isCaps == true) {
             //set caps button color
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -342,15 +499,48 @@ class KeyboardViewController: UIInputViewController {
                 self.capsButton.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Normal)
             }
         }
+        
+        //update variables to keep track of where we are
+        currentKeyboard = 1
+        textEntered = false
+        
+        //round all buttons
+        for view in self.inputView.subviews as [UIView] {
+            view.layer.cornerRadius = 4.5
+            view.clipsToBounds = true
+        }
+        
+        //update keyboard color
+        //update keyboard color
+        dispatch_after(1, dispatch_get_main_queue(), {
+            self.updateKeyboardColor()
+        })
     }
     
     @IBAction func switchToSpecialCharacters(sender: UIButton) {
-        //play click sound
-        AudioServicesPlaySystemSound(1104)
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
+            //play click sound
+            AudioServicesPlaySystemSound(1104)
+        }
         
         //switch to numerical xib
-        var bundle = NSBundle.mainBundle() as NSBundle
-        bundle.loadNibNamed("SpecialCharactersKeyboard", owner:self, options:nil)
+        if(UIScreen.mainScreen().bounds.size.width < UIScreen.mainScreen().bounds.size.height){//check orientation
+            var bundle = NSBundle.mainBundle() as NSBundle
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                bundle.loadNibNamed("SpecialCharactersKeyboardiPad", owner:self, options:nil)
+            } else {
+                bundle.loadNibNamed("SpecialCharactersKeyboard", owner:self, options:nil)
+            }
+            
+            
+        } else{
+            var bundle = NSBundle.mainBundle() as NSBundle
+            if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {//check device
+                bundle.loadNibNamed("SpecialCharactersKeyboardiPadLandscape", owner:self, options:nil)
+            } else {
+                bundle.loadNibNamed("SpecialCharactersKeyboardLandscape", owner:self, options:nil)
+            }
+        }
         
         //update variables to keep track of where we are
         currentKeyboard = 3
@@ -358,11 +548,13 @@ class KeyboardViewController: UIInputViewController {
         
         //round all buttons
         for view in self.inputView.subviews as [UIView] {
-            view.layer.cornerRadius = 5.0
+            view.layer.cornerRadius = 4.5
             view.clipsToBounds = true
         }
         
         //update keyboard color
-        updateKeyboardColor()
+        dispatch_after(1, dispatch_get_main_queue(), {
+            self.updateKeyboardColor()
+        })
     }
 }

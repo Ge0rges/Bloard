@@ -95,23 +95,25 @@ class ViewController: UIViewController {
         //set the value
         var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
         sharedDefaults!.setFloat(-sender.value, forKey: "KBBackgroundColorShade")
+        sharedDefaults?.synchronize()
         
         //update the UI
-        keyboardBackground.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
+        keyboardBackground.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha:1)
     }
     
     @IBAction func setKeysBackgroundColor(sender: UISlider) {
         //set the value
         var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
         sharedDefaults!.setFloat(-sender.value, forKey: "KBKeysColorShade")
+        sharedDefaults?.synchronize()
         
         //update the UI
-        yKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
-        tKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
-        rKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
-        eKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
-        wKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
-        qKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha: 1)
+        yKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha:1)
+        tKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha:1)
+        rKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha:1)
+        eKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha:1)
+        wKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha:1)
+        qKey.backgroundColor = UIColor(white: CGFloat(-sender.value), alpha:1)
         
     }
     

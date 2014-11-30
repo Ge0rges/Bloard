@@ -20,6 +20,15 @@
 		DACC250F1A04047A0037B893 /* NumericalKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DACC250E1A04047A0037B893 /* NumericalKeyboard.xib */; };
 		DACC25141A041AB90037B893 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACC25101A04188A0037B893 /* AVFoundation.framework */; };
 		DAD4A38D1A04C4F10058403F /* SpecialCharactersKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */; };
+		DADCDCE71A24FFFA007BD313 /* DefaultKeyboardiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCE61A24FFFA007BD313 /* DefaultKeyboardiPad.xib */; };
+		DADCDCEB1A2714F0007BD313 /* DefaultKeyboardLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCEA1A2714F0007BD313 /* DefaultKeyboardLandscape.xib */; };
+		DADCDCEE1A276E68007BD313 /* NumericalKeyboardLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCED1A276E68007BD313 /* NumericalKeyboardLandscape.xib */; };
+		DADCDCF01A27A3AE007BD313 /* SpecialCharactersKeyboardLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCEF1A27A3AE007BD313 /* SpecialCharactersKeyboardLandscape.xib */; };
+		DADCDCF21A28EF01007BD313 /* NumericalKeyboardiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCF11A28EF01007BD313 /* NumericalKeyboardiPad.xib */; };
+		DADCDCF41A28F34D007BD313 /* SpecialCharactersKeyboardiPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCF31A28F34D007BD313 /* SpecialCharactersKeyboardiPad.xib */; };
+		DADCDCF61A28F973007BD313 /* NumericalKeyboardiPadLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCF51A28F973007BD313 /* NumericalKeyboardiPadLandscape.xib */; };
+		DADCDCF91A298CB4007BD313 /* DefaultKeyboardiPadLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCF81A298CB4007BD313 /* DefaultKeyboardiPadLandscape.xib */; };
+		DADCDCFE1A298F2E007BD313 /* SpecialCharactersKeyboardiPadLandscape.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADCDCFD1A298F2E007BD313 /* SpecialCharactersKeyboardiPadLandscape.xib */; };
 		DAFEC3A41A0684E300A276CB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFEC3A31A0684E300A276CB /* Social.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +85,15 @@
 		DACC25101A04188A0037B893 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialCharactersKeyboard.xib; sourceTree = "<group>"; };
 		DAD4A3941A057FD40058403F /* Bloard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bloard-Bridging-Header.h"; sourceTree = "<group>"; };
+		DADCDCE61A24FFFA007BD313 /* DefaultKeyboardiPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultKeyboardiPad.xib; sourceTree = "<group>"; };
+		DADCDCEA1A2714F0007BD313 /* DefaultKeyboardLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultKeyboardLandscape.xib; sourceTree = "<group>"; };
+		DADCDCED1A276E68007BD313 /* NumericalKeyboardLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericalKeyboardLandscape.xib; sourceTree = "<group>"; };
+		DADCDCEF1A27A3AE007BD313 /* SpecialCharactersKeyboardLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialCharactersKeyboardLandscape.xib; sourceTree = "<group>"; };
+		DADCDCF11A28EF01007BD313 /* NumericalKeyboardiPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericalKeyboardiPad.xib; sourceTree = "<group>"; };
+		DADCDCF31A28F34D007BD313 /* SpecialCharactersKeyboardiPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialCharactersKeyboardiPad.xib; sourceTree = "<group>"; };
+		DADCDCF51A28F973007BD313 /* NumericalKeyboardiPadLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumericalKeyboardiPadLandscape.xib; sourceTree = "<group>"; };
+		DADCDCF81A298CB4007BD313 /* DefaultKeyboardiPadLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultKeyboardiPadLandscape.xib; sourceTree = "<group>"; };
+		DADCDCFD1A298F2E007BD313 /* SpecialCharactersKeyboardiPadLandscape.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialCharactersKeyboardiPadLandscape.xib; sourceTree = "<group>"; };
 		DAFEC3A31A0684E300A276CB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		DAFEC3A51A06DE7F00A276CB /* Bloard Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bloard Keyboard.entitlements"; sourceTree = "<group>"; };
 		DAFEC3A61A06DEB600A276CB /* Bloard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Bloard.entitlements; sourceTree = "<group>"; };
@@ -195,6 +213,7 @@
 		DAD4A38E1A052ACC0058403F /* keyboard XIB's */ = {
 			isa = PBXGroup;
 			children = (
+				DADCDCE91A250009007BD313 /* iPad */,
 				DAD4A38F1A052ADB0058403F /* iPhone */,
 			);
 			name = "keyboard XIB's";
@@ -203,6 +222,7 @@
 		DAD4A38F1A052ADB0058403F /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				DADCDCEC1A2714FC007BD313 /* Landscape */,
 				DAD4A3901A052B5D0058403F /* Portait */,
 			);
 			name = iPhone;
@@ -216,6 +236,45 @@
 				DAD4A38C1A04C4F10058403F /* SpecialCharactersKeyboard.xib */,
 			);
 			name = Portait;
+			sourceTree = "<group>";
+		};
+		DADCDCE81A250002007BD313 /* Portrait */ = {
+			isa = PBXGroup;
+			children = (
+				DADCDCE61A24FFFA007BD313 /* DefaultKeyboardiPad.xib */,
+				DADCDCF11A28EF01007BD313 /* NumericalKeyboardiPad.xib */,
+				DADCDCF31A28F34D007BD313 /* SpecialCharactersKeyboardiPad.xib */,
+			);
+			name = Portrait;
+			sourceTree = "<group>";
+		};
+		DADCDCE91A250009007BD313 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				DADCDCE81A250002007BD313 /* Portrait */,
+				DADCDCF71A28F978007BD313 /* Landscape */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		DADCDCEC1A2714FC007BD313 /* Landscape */ = {
+			isa = PBXGroup;
+			children = (
+				DADCDCEA1A2714F0007BD313 /* DefaultKeyboardLandscape.xib */,
+				DADCDCED1A276E68007BD313 /* NumericalKeyboardLandscape.xib */,
+				DADCDCEF1A27A3AE007BD313 /* SpecialCharactersKeyboardLandscape.xib */,
+			);
+			name = Landscape;
+			sourceTree = "<group>";
+		};
+		DADCDCF71A28F978007BD313 /* Landscape */ = {
+			isa = PBXGroup;
+			children = (
+				DADCDCF81A298CB4007BD313 /* DefaultKeyboardiPadLandscape.xib */,
+				DADCDCF51A28F973007BD313 /* NumericalKeyboardiPadLandscape.xib */,
+				DADCDCFD1A298F2E007BD313 /* SpecialCharactersKeyboardiPadLandscape.xib */,
+			);
+			name = Landscape;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,9 +409,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADCDCE71A24FFFA007BD313 /* DefaultKeyboardiPad.xib in Resources */,
+				DADCDCF21A28EF01007BD313 /* NumericalKeyboardiPad.xib in Resources */,
+				DADCDCFE1A298F2E007BD313 /* SpecialCharactersKeyboardiPadLandscape.xib in Resources */,
+				DADCDCF91A298CB4007BD313 /* DefaultKeyboardiPadLandscape.xib in Resources */,
 				DAD4A38D1A04C4F10058403F /* SpecialCharactersKeyboard.xib in Resources */,
+				DADCDCEB1A2714F0007BD313 /* DefaultKeyboardLandscape.xib in Resources */,
+				DADCDCF61A28F973007BD313 /* NumericalKeyboardiPadLandscape.xib in Resources */,
 				DA014F201A02A4FF00E605A5 /* DefaultKeyboard.xib in Resources */,
+				DADCDCF01A27A3AE007BD313 /* SpecialCharactersKeyboardLandscape.xib in Resources */,
 				DACC250F1A04047A0037B893 /* NumericalKeyboard.xib in Resources */,
+				DADCDCF41A28F34D007BD313 /* SpecialCharactersKeyboardiPad.xib in Resources */,
+				DADCDCEE1A276E68007BD313 /* NumericalKeyboardLandscape.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,13 +573,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bloard/Bloard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilyas Kanaan (H457J2HWER)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilyas Kanaan (H457J2HWER)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Bloard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3a531fe7-b3ad-4801-ac76-43e700d0f440";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bloard/Bloard-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -523,13 +591,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bloard/Bloard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ilyas Kanaan (7DTJP5N92F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ilyas Kanaan (7DTJP5N92F)";
+				COPY_PHASE_STRIP = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Bloard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "97121a86-d325-4b7c-988c-68f7f90275fb";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bloard/Bloard-Bridging-Header.h";
 			};
 			name = Release;
@@ -573,8 +642,8 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Bloard Keyboard/Bloard Keyboard.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ilyas Kanaan (H457J2HWER)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ilyas Kanaan (H457J2HWER)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -582,7 +651,7 @@
 				INFOPLIST_FILE = "Bloard Keyboard/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "01d98a25-fbd8-4638-8fea-04ca31e5b9d1";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bloard Keyboard/Bloard Keyboard-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -594,12 +663,13 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Bloard Keyboard/Bloard Keyboard.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ilyas Kanaan (7DTJP5N92F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ilyas Kanaan (7DTJP5N92F)";
+				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = "Bloard Keyboard/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c56db9a6-5597-4343-9ce8-b95c0eb7508d";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bloard Keyboard/Bloard Keyboard-Bridging-Header.h";
 			};

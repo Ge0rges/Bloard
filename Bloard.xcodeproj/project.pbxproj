@@ -579,7 +579,7 @@
 				INFOPLIST_FILE = Bloard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a531fe7-b3ad-4801-ac76-43e700d0f440";
+				PROVISIONING_PROFILE = "a7d44550-fd34-4edb-8b47-1063ca0e8ac3";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bloard/Bloard-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -598,7 +598,7 @@
 				INFOPLIST_FILE = Bloard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97121a86-d325-4b7c-988c-68f7f90275fb";
+				PROVISIONING_PROFILE = "c7ce6fa9-4681-4985-8cae-9db180f8d2af";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bloard/Bloard-Bridging-Header.h";
 			};
 			name = Release;
@@ -651,7 +651,7 @@
 				INFOPLIST_FILE = "Bloard Keyboard/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "01d98a25-fbd8-4638-8fea-04ca31e5b9d1";
+				PROVISIONING_PROFILE = "097113a6-a549-41f5-a162-bb988339618a";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bloard Keyboard/Bloard Keyboard-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -669,7 +669,7 @@
 				INFOPLIST_FILE = "Bloard Keyboard/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c56db9a6-5597-4343-9ce8-b95c0eb7508d";
+				PROVISIONING_PROFILE = "b23480be-a7d8-4d49-8144-87e06ed05c72";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bloard Keyboard/Bloard Keyboard-Bridging-Header.h";
 			};

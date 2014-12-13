@@ -53,14 +53,12 @@ class KeyboardViewController: UIInputViewController {
         
         //update variables to keep track of where we are
         currentKeyboard = 1
-        
         isCaps = true
         
         //round all buttons
         for view in self.inputView.subviews as [UIView] {
             view.layer.cornerRadius = 4.5
             view.clipsToBounds = true
-            
         }
     }
     

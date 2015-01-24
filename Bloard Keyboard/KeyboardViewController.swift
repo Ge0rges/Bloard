@@ -12,18 +12,27 @@ import AVFoundation
 
 
 class KeyboardViewController: UIInputViewController {
-    
+
     //declare outlets and varibales
     var shouldToggleCapsIfDeleted: Bool = false
     var isCaps: Bool = true
     var textEntered: Bool = false
     var loadedNibFromLayoutMethod: Bool = false
     
+    var sharedDefaults: NSUserDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")!
+    
+    var keyBackgroundColor: UIColor = UIColor(white: 0.43921569, alpha: 1)
+    var keyboardBackgroundColor: UIColor = UIColor(white: 0.3372549, alpha: 1)
+    
+    var lexicon: UILexicon!
+    
+    var currentWord: String = ""
     var deleteTimer: NSTimer!
     var currentKeyboard: NSInteger!
     
     @IBOutlet var capsButton: UIButton!
     @IBOutlet var iPadCapsButton: UIButton!
+
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -51,6 +60,12 @@ class KeyboardViewController: UIInputViewController {
             }
         }
         
+        //determine the keyboard color
+        if (sharedDefaults.objectForKey("KBKeysColorShade") != nil) {
+            self.keyBackgroundColor = UIColor(white: CGFloat(sharedDefaults.floatForKey("KBKeysColorShade")), alpha:1)
+            self.keyboardBackgroundColor = UIColor(white: CGFloat(sharedDefaults.floatForKey("KBBackgroundColorShade")), alpha:1)
+        }
+        
         //update variables to keep track of where we are
         currentKeyboard = 1
         isCaps = true
@@ -61,8 +76,13 @@ class KeyboardViewController: UIInputViewController {
             view.clipsToBounds = true
         }
         
+        
         //if we don't have a second caps button just assign it a UIButton instance
         if (self.iPadCapsButton == nil) {self.iPadCapsButton = UIButton.buttonWithType(UIButtonType.System) as UIButton}
+        
+        //get the lexicon
+        let controller = UIInputViewController()
+        controller.requestSupplementaryLexiconWithCompletion({lclLexicon in self.lexicon = lclLexicon})
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -83,23 +103,18 @@ class KeyboardViewController: UIInputViewController {
                 //set the color
                 self.updateKeyboardColor()
                 
-                var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                if (sharedDefaults!.boolForKey("inApp") == true) {
+                if (self.sharedDefaults.boolForKey("inApp") == true) {
                     NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("updateKeyboardColor"), userInfo: nil, repeats: true)
                 }
-                
-                
+
                 //set caps button color
                 if (self.isCaps == true) {
                     //set caps button color
                     //update UI
-                    var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                    var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                    
-                    self.capsButton.backgroundColor = backgroundColor
+                    self.capsButton.backgroundColor = self.keyBackgroundColor
                     self.capsButton.setTitleColor (UIColor.whiteColor(), forState: UIControlState.Normal)
                     
-                    self.iPadCapsButton.backgroundColor = backgroundColor
+                    self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                     self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 }
             })
@@ -129,13 +144,10 @@ class KeyboardViewController: UIInputViewController {
                         //set caps button color
                         dispatch_async(dispatch_get_main_queue()) { () -> Void in
                             //update UI
-                            var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                            var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                            
-                            self.capsButton.backgroundColor = backgroundColor
+                            self.capsButton.backgroundColor = self.keyBackgroundColor
                             self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                             
-                            self.iPadCapsButton.backgroundColor = backgroundColor
+                            self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                             self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                             
                         }
@@ -175,13 +187,10 @@ class KeyboardViewController: UIInputViewController {
                         //set caps button color
                         dispatch_async(dispatch_get_main_queue()) { () -> Void in
                             //update UI
-                            var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                            var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                            
-                            self.capsButton.backgroundColor = backgroundColor
+                            self.capsButton.backgroundColor = self.keyBackgroundColor
                             self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                             
-                            self.iPadCapsButton.backgroundColor = backgroundColor
+                            self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                             self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                         }
                     }
@@ -229,33 +238,35 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func updateKeyboardColor() {
-        //set the color of the keyboard
-        //get the settings
-        var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-        var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
+        //update the colors
+        if (sharedDefaults.objectForKey("KBKeysColorShade") != nil) {
+            self.keyBackgroundColor = UIColor(white: CGFloat(sharedDefaults.floatForKey("KBKeysColorShade")), alpha:1)
+            self.keyboardBackgroundColor = UIColor(white: CGFloat(sharedDefaults.floatForKey("KBBackgroundColorShade")), alpha:1)
+        }
 
+        //set the color of the keyboard
         //set the background color
-        self.inputView.backgroundColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBBackgroundColorShade")), alpha:1)
+        self.inputView.backgroundColor = self.keyboardBackgroundColor
         
         //set the key color
         for view in self.inputView.subviews as [UIView] {
-            view.backgroundColor = backgroundColor
+            view.backgroundColor = self.keyBackgroundColor
         }
         
         //set caps color
         if (self.isCaps) {
-            self.capsButton.backgroundColor = backgroundColor
+            self.capsButton.backgroundColor = self.keyBackgroundColor
             self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             
-            self.iPadCapsButton.backgroundColor = backgroundColor
+            self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
             self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             
         } else {
             self.capsButton.backgroundColor = UIColor.whiteColor()
-            self.capsButton.setTitleColor(backgroundColor, forState: UIControlState.Normal)
+            self.capsButton.setTitleColor(self.keyBackgroundColor, forState: UIControlState.Normal)
             
             self.iPadCapsButton.backgroundColor = UIColor.whiteColor()
-            self.iPadCapsButton.setTitleColor(backgroundColor, forState: UIControlState.Normal)
+            self.iPadCapsButton.setTitleColor(self.keyBackgroundColor, forState: UIControlState.Normal)
             
         }
     }
@@ -264,27 +275,26 @@ class KeyboardViewController: UIInputViewController {
     /*WRITING*/
     @IBAction func enterText(sender: UIButton) {//common method
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
-            //play click sound
-            AudioServicesPlaySystemSound(1104)
+            //play click sound on different thread
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { () -> Void in AudioServicesPlaySystemSound(1104)})
             
             //get button title and document proxy
-            let button = sender as UIButton
-            let title = button.titleForState(.Normal)
+            let title = sender.titleForState(.Normal)! as String
             var proxy = self.textDocumentProxy as UITextDocumentProxy
             
+            //add text to thread
+            self.currentWord += title
+
             //check if caps should be enabled
             if (proxy.autocapitalizationType! == .AllCharacters) {
                 self.isCaps = true;
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     //update UI
-                    var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                    var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                    
-                    self.capsButton.backgroundColor = backgroundColor
+                    self.capsButton.backgroundColor = self.keyBackgroundColor
                     self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     
-                    self.iPadCapsButton.backgroundColor = backgroundColor
+                    self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                     self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     
                 }
@@ -293,26 +303,22 @@ class KeyboardViewController: UIInputViewController {
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     //update UI
-                    var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                    var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                    
                     self.capsButton.backgroundColor = UIColor.whiteColor()
-                    self.capsButton.setTitleColor(backgroundColor, forState: UIControlState.Normal)
+                    self.capsButton.setTitleColor(self.keyBackgroundColor, forState: UIControlState.Normal)
                     
                     self.iPadCapsButton.backgroundColor = UIColor.whiteColor()
-                    self.iPadCapsButton.setTitleColor(backgroundColor, forState: UIControlState.Normal)
-                    
+                    self.iPadCapsButton.setTitleColor(self.keyBackgroundColor, forState: UIControlState.Normal)
                 }
             }
             
             
             //check if caps is enabled and insert the title
             if (!self.isCaps) {
-                proxy.insertText(title!.lowercaseString)
+                proxy.insertText(title.lowercaseString)
                 self.shouldToggleCapsIfDeleted = false
                 
             } else {
-                proxy.insertText(title!)
+                proxy.insertText(title)
                 
                 self.shouldToggleCapsIfDeleted = true
                 
@@ -329,13 +335,10 @@ class KeyboardViewController: UIInputViewController {
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     //update UI
-                    var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                    var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                    
-                    self.capsButton.backgroundColor = backgroundColor
+                    self.capsButton.backgroundColor = self.keyBackgroundColor
                     self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     
-                    self.iPadCapsButton.backgroundColor = backgroundColor
+                    self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                     self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     
                 }
@@ -348,30 +351,27 @@ class KeyboardViewController: UIInputViewController {
     
     @IBAction func toggleCaps() {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
-            //play click sound
-            AudioServicesPlaySystemSound(1104)
+            //play click sound on different thread
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { () -> Void in AudioServicesPlaySystemSound(1104)})
             
             //toggle caps
             self.isCaps = !self.isCaps
             
             //update UI
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                
                 if (self.isCaps) {
-                    self.capsButton.backgroundColor = backgroundColor
+                    self.capsButton.backgroundColor = self.keyBackgroundColor
                     self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     
-                    self.iPadCapsButton.backgroundColor = backgroundColor
+                    self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                     self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     
                 } else {
                     self.capsButton.backgroundColor = UIColor.whiteColor()
-                    self.capsButton.setTitleColor(backgroundColor, forState: UIControlState.Normal)
+                    self.capsButton.setTitleColor(self.keyBackgroundColor, forState: UIControlState.Normal)
                     
                     self.iPadCapsButton.backgroundColor = UIColor.whiteColor()
-                    self.iPadCapsButton.setTitleColor(backgroundColor, forState: UIControlState.Normal)
+                    self.iPadCapsButton.setTitleColor(self.keyBackgroundColor, forState: UIControlState.Normal)
                     
                 }
             })
@@ -386,8 +386,8 @@ class KeyboardViewController: UIInputViewController {
     
     @IBAction func deleteText() {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
-            //play click sound
-            AudioServicesPlaySystemSound(1104)
+            //play click sound on different thread
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { () -> Void in AudioServicesPlaySystemSound(1104)})
             
             //delete the text
             var proxy = self.textDocumentProxy as UITextDocumentProxy
@@ -412,6 +412,9 @@ class KeyboardViewController: UIInputViewController {
             
             //delete 1 back
             proxy.deleteBackward()
+            
+            //remove last chracter of current word
+            self.currentWord.substringToIndex(self.currentWord.endIndex.predecessor())
         }
     }
     
@@ -443,13 +446,10 @@ class KeyboardViewController: UIInputViewController {
                 self.isCaps = true;
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                    var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                    
-                    self.capsButton.backgroundColor = backgroundColor
+                    self.capsButton.backgroundColor = self.keyBackgroundColor
                     self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     
-                    self.iPadCapsButton.backgroundColor = backgroundColor
+                    self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                     self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 }
             }
@@ -458,8 +458,8 @@ class KeyboardViewController: UIInputViewController {
     
     @IBAction func space(sender: UIButton) {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) { () -> Void in
-            //play click sound
-            AudioServicesPlaySystemSound(1104)
+            //play click sound on different thread
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { () -> Void in AudioServicesPlaySystemSound(1104)})
             
             //get document proxy
             var proxy = self.textDocumentProxy as UITextDocumentProxy
@@ -468,7 +468,6 @@ class KeyboardViewController: UIInputViewController {
             if (self.currentKeyboard > 1 && self.textEntered == true) {
                 self.switchToDefault(sender)
             }
-            
             
             //insert space
             proxy.insertText(" ")
@@ -479,14 +478,23 @@ class KeyboardViewController: UIInputViewController {
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     //update UI
-                    var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                    var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                    
-                    self.capsButton.backgroundColor = backgroundColor
+                    self.capsButton.backgroundColor = self.keyBackgroundColor
                     self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     
-                    self.iPadCapsButton.backgroundColor = backgroundColor
+                    self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                     self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                }
+            }
+            
+            //check the auto correct
+            for word in self.lexicon.entries {
+                if word as String == self.currentWord {
+                    for character in self.currentWord {
+                        proxy.deleteBackward()
+                    }
+                    
+                    proxy.insertText(word as String)
+                    self.currentWord = ""
                 }
             }
         }
@@ -594,13 +602,10 @@ class KeyboardViewController: UIInputViewController {
             //set caps button color
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 //update UI
-                var sharedDefaults = NSUserDefaults(suiteName: "group.com.ge0rges.bloard")
-                var backgroundColor: UIColor = UIColor(white: CGFloat(sharedDefaults!.floatForKey("KBKeysColorShade")), alpha:1)
-                
-                self.capsButton.backgroundColor = backgroundColor
+                self.capsButton.backgroundColor = self.keyBackgroundColor
                 self.capsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 
-                self.iPadCapsButton.backgroundColor = backgroundColor
+                self.iPadCapsButton.backgroundColor = self.keyBackgroundColor
                 self.iPadCapsButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                 
             }

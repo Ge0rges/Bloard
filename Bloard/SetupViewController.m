@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkKeyboard:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkKeyboard:) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +32,7 @@
         if ([keyboard isEqualToString:bundleID])
             return YES;
     }
-    
+
     return NO;
 }
 
